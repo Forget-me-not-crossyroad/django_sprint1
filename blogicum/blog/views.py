@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import Http404
-from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -49,21 +48,18 @@ posts = [
 
 
 def index(request):
-    template = 'blog/index.html'
     context = {'post_list': posts}
-    return render(request, template, context)
+    return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, pk):
-    template = 'blog/detail.html'
     try:
         context = {'post': posts[pk]}
     except IndexError:
         raise Http404(f'Пост "{pk}" не найден') from None
-    return render(request, template, context)
+    return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
-    template = 'blog/category.html'
     context = {'category_slug': category_slug}
-    return render(request, template, context)
+    return render(request, 'blog/category.html', context)
