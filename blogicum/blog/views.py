@@ -62,3 +62,7 @@ def post_detail(request, pk):
 def category_posts(request, category_slug):
     context = {'category_slug': category_slug}
     return render(request, 'blog/category.html', context)
+
+
+def page_not_found_view(request, exception):
+    return render(request, 'blog/404.html', status=404)
