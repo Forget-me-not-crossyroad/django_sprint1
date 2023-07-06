@@ -54,7 +54,7 @@ def post_detail(request, pk):
     try:
         context = {'post': posts[pk]}
     except IndexError:
-        raise Http404(f'Пост "{pk}" не найден') from None
+        raise Http404(f'Пост "{pk}" не найден')
     return render(request, 'blog/detail.html', context)
 
 
@@ -63,5 +63,11 @@ def category_posts(request, category_slug):
     return render(request, 'blog/category.html', context)
 
 
+# Данная функция и шаблон 'template/blog/404.html'
+# введены как дополнительный функционал для отображения
+#  страницы 404 в новом дизайне в случае, если
+# запрашиваемый ресурс недоступен (можно получить
+#  после запуска сервера при переходе к
+# http://127.0.0.1:8000/posts/999/)
 def page_not_found_view(request, exception):
     return render(request, 'blog/404.html', status=404)
