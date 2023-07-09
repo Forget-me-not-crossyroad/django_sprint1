@@ -1,6 +1,5 @@
 {% load static %}
 {% with request.resolver_match.view_name as view_name %}
-{% comment %} {% with request.resolver_match.url_name as view_name %} {% endcomment %}
 <header>
     <nav class="navbar navbar-light" style="background-color: lightskyblue">
       <div class="container">
@@ -16,14 +15,12 @@
             </a>
           </li>
           <li class="nav-item">              
-            {% comment %} <a class="nav-link {% if view_name  == 'pages:about' %}active{% endif %}" {% endcomment %}
             <a class="nav-link {% if view_name  == 'pages:about' %}active{% endif %}"
             href="{% url 'pages:about' %}">
               О проекте
             </a>
           </li>
           <li class="nav-item">
-            {% comment %} <a class="nav-link {% if view_name  == 'pages:rules' %}active{% endif %}" {% endcomment %}
             <a class="nav-link {% if view_name  == 'pages:rules' %}active{% endif %}"
             href="{% url 'pages:rules' %}">
               Наши правила
